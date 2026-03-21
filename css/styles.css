@@ -1,0 +1,424 @@
+/* LocalWays Bogotá - Styles */
+:root {
+  --bg: #f0f2f5;
+  --header: #1b4f72;
+  --nav: #2874a6;
+  --accent: #f39c12;
+  --card-bg: #ffffff;
+  --text: #222;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* BANNER CAROUSEL */
+.banner-carousel {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 79, 114, 0.55);
+  z-index: 1;
+}
+
+.carousel-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.carousel-content h1 {
+  font-size: 3.5em;
+  margin: 0 0 15px 0;
+  font-weight: bold;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
+  animation: slideInDown 0.8s ease-out;
+}
+
+.carousel-content p {
+  font-size: 1.5em;
+  margin: 0 0 25px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: slideInUp 0.8s ease-out 0.2s both;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* CAROUSEL CONTROLS */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(243, 156, 18, 0.7);
+  color: white;
+  border: none;
+  padding: 15px 18px;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.carousel-control:hover {
+  background: rgba(243, 156, 18, 1);
+}
+
+.carousel-prev {
+  left: 20px;
+}
+
+.carousel-next {
+  right: 20px;
+}
+
+/* CAROUSEL INDICATORS */
+.carousel-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.indicator.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.indicator:hover {
+  background: rgba(243, 156, 18, 0.7);
+}
+
+@media (max-width: 600px) {
+  .banner-carousel {
+    height: 280px;
+  }
+  
+  .carousel-content h1 {
+    font-size: 2em;
+  }
+  
+  .carousel-content p {
+    font-size: 1.1em;
+  }
+  
+  .carousel-control {
+    padding: 10px 14px;
+    font-size: 1.2em;
+  }
+  
+  .carousel-prev {
+    left: 10px;
+  }
+  
+  .carousel-next {
+    right: 10px;
+  }
+
+  /* show hamburger button */
+  #menu-toggle {
+    display: block;
+  }
+
+  #lang-toggle {
+    display: block;
+  }
+
+  /* hide nav by default, show when open */
+  nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  nav button {
+    width: 100%;
+    text-align: left;
+    margin: 6px 0;
+  }
+}
+
+.banner-cta {
+  background: var(--accent);
+  color: #222;
+  padding: 13px 35px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.05em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  animation: slideInUp 0.8s ease-out 0.4s both;
+}
+
+.banner-cta:hover {
+  background: #f1a60a;
+  transform: scale(1.05);
+}
+
+.banner-cta:focus {
+  outline: 3px solid rgba(243, 156, 18, 0.5);
+}
+header {
+  /* header used for the hamburger toggle on mobile */
+  position: relative;
+  height: 0; /* no visible height by default */
+}
+
+#menu-toggle {
+  display: none; /* shown only on small screens */
+  position: absolute;
+  top: 10px;
+  right: 60px; /* position left of lang-toggle */
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 1.5em;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 200;
+}
+
+#lang-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--nav);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 200;
+}
+
+/* NAVIGATION */
+nav {
+  background: var(--nav);
+  padding: 12px 10px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav button {
+  padding: 11px 18px;
+  margin: 5px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.98em;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+}
+
+nav button:hover {
+  background: #f1a60a;
+  transform: translateY(-2px);
+}
+
+nav button:focus {
+  outline: 3px solid rgba(243, 156, 18, 0.5);
+}
+
+/* SECTIONS */
+section {
+  display: none;
+  padding: 20px;
+}
+
+.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+h2 {
+  color: var(--header);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+/* CARDS */
+.card {
+  background: var(--card-bg);
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--header);
+}
+
+.card img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.card p {
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.card button {
+  background: var(--accent);
+  color: #222;
+  padding: 9px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.card button:hover {
+  background: #f1a60a;
+  transform: scale(1.05);
+}
+
+.card button:focus {
+  outline: 3px solid rgba(243, 156, 18, 0.5);
+}
+
+/* MAP */
+#map {
+  height: 400px;
+  width: 100%;
+  margin-top: 20px;
+  border: 0;
+  border-radius: 6px;
+}
+
+/* RESPONSIVE GRID */
+@media (min-width: 900px) {
+  section {
+    padding: 30px;
+  }
+  
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+  }
+}
+
+/* ACCESSIBILITY */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
