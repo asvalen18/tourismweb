@@ -402,7 +402,13 @@ let carouselInterval;
 function showSection(id) {
   document.querySelectorAll('section').forEach(section => section.classList.remove('active'));
   const el = document.getElementById(id);
-  if (el) el.classList.add('active');
+  if (el) {
+    el.classList.add('active');
+    // Scroll suave hacia la sección
+    setTimeout(() => {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
 }
 
 function goToMap(lat, lng) {
