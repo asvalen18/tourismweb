@@ -414,6 +414,11 @@ function showSection(id) {
 function goToMap(lat, lng) {
   const frame = document.getElementById('map');
   frame.src = `https://maps.google.com/maps?q=${lat},${lng}&z=14&output=embed`;
+  
+  // Navegar al mapa con scroll suave
+  setTimeout(() => {
+    frame.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
 }
 
 // Carousel functions
